@@ -10,7 +10,8 @@ public class actionMobile:action
     [SerializeField] Joystick joystick;
     int dashnum;
     [SerializeField] GameObject dashbtn;
-    [SerializeField] GameObject grabbtn;
+    [SerializeField] public GameObject grabbtn;
+    [SerializeField] public GameObject groundJumpbtn;
     [Header("sensitivity")] [SerializeField] [Range(0,1)]float sensitive =1;
 
     protected override void Awake()
@@ -18,6 +19,7 @@ public class actionMobile:action
         base.Awake();
         dashbtn = GameObject.Find("dash");
         grabbtn = GameObject.Find("grab");
+        groundJumpbtn = GameObject.Find("groundJump");
     }
 
     protected override bool InputDash()
@@ -28,6 +30,11 @@ public class actionMobile:action
     protected override bool InputGrab()
     {
         return grabbtn.GetComponent<ButtonIsDown>().IsDown;
+    }
+
+    protected override bool InputGroundJump()
+    {
+        return groundJumpbtn.GetComponent<ButtonIsDown>().IsDown;
     }
 
     protected override bool InputJump()

@@ -41,7 +41,7 @@ public class UpgradeSys : MonoBehaviour
 
     public void TankColdTime()
     {
-        if (GameManager.instance.Money >= Mathf.RoundToInt(CtimeMoneyCost(clickedTank) / clickedTank.ColdTime) && clickedTank.ColdTime>0.2f)
+        if (GameManager.instance.Money >= Mathf.RoundToInt(CtimeMoneyCost(clickedTank) / clickedTank.ColdTime) && clickedTank.ColdTime>=0.3f)
         {
             GameManager.instance.Money -= Mathf.RoundToInt(CtimeMoneyCost(clickedTank) / clickedTank.ColdTime);
             clickedTank.ColdTime -=CTimeDRatio;
@@ -59,7 +59,7 @@ public class UpgradeSys : MonoBehaviour
     {
         if (clickedTank != null)
         {
-            tankStat.text = clickedTank.GetComponentInParent<Rigidbody2D>().name.ToString()+"\n" +"Lv : " + clickedTank.TankLV + "\n"+"ColdTime : "+clickedTank.ColdTime;
+            tankStat.text = clickedTank.GetComponentInParent<Rigidbody2D>().name.ToString()+"\n" +"Lv : " + clickedTank.TankLV + "\n"+"ColdTime : "+Mathf.Round(clickedTank.ColdTime*10)/10;
             upgradeLvCost.text = "Cost : " + (clickedTank.TankLV * LvMoneyCost()).ToString();
             upgradeColdTimeCost.text ="Cost : " + $"{Mathf.RoundToInt(CtimeMoneyCost(clickedTank) / clickedTank.ColdTime)}";
             //Debug.Log(clickedTank.GetComponentInParent<Rigidbody2D>().tag);

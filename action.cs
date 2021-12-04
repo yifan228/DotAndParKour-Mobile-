@@ -98,13 +98,18 @@ public class action : MonoBehaviour
     {
         if (canjump())
         {
-            if (InputJump()&&!jumpIscolding)
+            if (InputGroundJump()&&!jumpIscolding)
             {
                 //CalWallGroundExV();
                 _myChar.velocity = new Vector2(exvelocity.x, 1f * Vjump + exvelocity.y);
                 StartCoroutine(jumpcolding());
             }
         }
+    }
+
+    protected virtual bool InputGroundJump()
+    {
+        return Input.GetKey(KeyCode.Space);
     }
 
     protected virtual bool InputJump()
@@ -131,7 +136,7 @@ public class action : MonoBehaviour
     {
         float t0 = Time.time;
          jumpIscolding = true;
-        while (Time.time - t0 <= 0.2f)
+        while (Time.time - t0 <= 0.3f)
         {
             yield return null;
         }
@@ -145,7 +150,7 @@ public class action : MonoBehaviour
         {
             //if (InputGrab())
             //{
-                _myChar.gravityScale = 0;
+                //_myChar.gravityScale = 0;
                 //CalWallGroundExV();
                 //Debug.Log("grab");
                 AnyAdditionAction();
@@ -194,7 +199,7 @@ public class action : MonoBehaviour
                     _myChar.velocity = new Vector2(-1f+exvelocity.x, 1f * Vjump + exvelocity.y);
                 }else if (InputJump()&&!jumpIscolding)
                 {
-                    _myChar.GetComponent<Transform>().position += new Vector3(0, 0.2f, 0);
+                    _myChar.GetComponent<Transform>().position += new Vector3(0, 0.3f, 0);
                     StartCoroutine(jumpcolding());
                 }
             }else if (InputRight())

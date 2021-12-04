@@ -39,9 +39,7 @@ public class GameSystem : MonoBehaviour
             gm.Sys = this;
 
         }
-        else
-        {
-            return;
-        }
+        else { return; }
+        
     }
 }

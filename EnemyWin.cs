@@ -16,6 +16,7 @@ public class EnemyWin : MonoBehaviour
             {
                 obj.GetComponent<enemy>().activate = false;
             }
+            GameManager.instance.GameOver();
         }
     }
 }
