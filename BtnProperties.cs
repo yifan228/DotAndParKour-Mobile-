@@ -7,4 +7,5 @@ public class BtnProperties : MonoBehaviour
     public string BtnName;
     public Sprite BtnSpite;
     public GameObject BtnTank;
+    public int TankCost;
 }

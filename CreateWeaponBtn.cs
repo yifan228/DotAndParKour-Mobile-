@@ -8,4 +8,5 @@ public class CreateWeaponBtn
     public string name;
     public Sprite UIDragTankImage;
     public GameObject tankType;
+    public int TankCost;
 }

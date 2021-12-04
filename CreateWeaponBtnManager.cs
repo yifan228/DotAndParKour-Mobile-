@@ -14,9 +14,10 @@ public class CreateWeaponBtnManager : MonoBehaviour
     [Header("Tanks")]
     [SerializeField] GameObject[] tanks;
 
-    void AddBtn(string tankTypeName,GameObject towerTankType,Sprite uiDragTankImage)
+    [SerializeField] int[] cost;
+    void AddBtn(string tankTypeName,GameObject towerTankType,Sprite uiDragTankImage,int cost)
     {
-        btnList.Add(new CreateWeaponBtn { name = tankTypeName, tankType = towerTankType, UIDragTankImage = uiDragTankImage });
+        btnList.Add(new CreateWeaponBtn { name = tankTypeName, tankType = towerTankType, UIDragTankImage = uiDragTankImage, TankCost = cost }) ;
     }
 
     void RemoveBtn(string thename)
@@ -31,7 +32,7 @@ public class CreateWeaponBtnManager : MonoBehaviour
     public void AddTank0()
     {
         string st0 = Btn0Add.GetComponentInChildren<Text>().text;
-        AddBtn(st0,tanks[0],tanks[0].GetComponent<SpriteRenderer>().sprite);
+        AddBtn(st0,tanks[0],tanks[0].GetComponent<SpriteRenderer>().sprite,cost[0]);
         Btn0Add.SetActive(false);
         Btn0Cancel.SetActive(true);
     }
@@ -45,7 +46,7 @@ public class CreateWeaponBtnManager : MonoBehaviour
     public void AddTank1()
     {
         string st1 = Btn1Add.GetComponentInChildren<Text>().text;
-        AddBtn(st1, tanks[1], tanks[1].GetComponent<SpriteRenderer>().sprite);
+        AddBtn(st1, tanks[1], tanks[1].GetComponent<SpriteRenderer>().sprite, cost[1]);
         Btn1Add.SetActive(false);
         Btn1Cancel.SetActive(true);
     }
